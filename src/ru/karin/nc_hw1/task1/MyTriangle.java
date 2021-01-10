@@ -1,5 +1,7 @@
 package ru.karin.nc_hw1.task1;
 
+import java.util.Objects;
+
 public class MyTriangle {
 
     enum triangleType {equilateral, isosceles, scalene}
@@ -41,5 +43,20 @@ public class MyTriangle {
             return triangleType.isosceles;
         else
             return triangleType.scalene;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyTriangle that = (MyTriangle) o;
+        return Objects.equals(v1, that.v1) &&
+                Objects.equals(v2, that.v2) &&
+                Objects.equals(v3, that.v3);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(v1, v2, v3);
     }
 }

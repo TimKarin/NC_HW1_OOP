@@ -1,5 +1,7 @@
 package ru.karin.nc_hw1.task2;
 
+import java.util.Objects;
+
 public class MyComplex {
     private double real = 0.0;
     private double imag = 0.0;
@@ -113,5 +115,19 @@ public class MyComplex {
 
     public MyComplex conjugate() {
         return new MyComplex(real, -imag);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyComplex myComplex = (MyComplex) o;
+        return Double.compare(myComplex.real, real) == 0 &&
+                Double.compare(myComplex.imag, imag) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(real, imag);
     }
 }

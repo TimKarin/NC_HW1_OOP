@@ -1,5 +1,7 @@
 package ru.karin.nc_hw1.task1;
 
+import java.util.Objects;
+
 public class Circle {
 
     private double radius = 1.0;
@@ -38,5 +40,19 @@ public class Circle {
 
     public double getArea() {
         return radius * radius * Math.PI;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Circle circle = (Circle) o;
+        return Double.compare(circle.radius, radius) == 0 &&
+                Objects.equals(color, circle.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(radius, color);
     }
 }
